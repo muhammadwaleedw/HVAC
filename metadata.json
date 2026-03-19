@@ -1,0 +1,7 @@
+{
+  "name": "Coolin HVAC Services",
+  "description": "Professional Air Conditioning & Heating Repair Services with a dynamic admin dashboard.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

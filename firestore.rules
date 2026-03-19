@@ -1,0 +1,76 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    // Collection: settings/site (Document: site)
+    //   - heroHeadline: string
+    //   - heroSubtext: string
+    //   - phone: string
+    //   - email: string
+    //   - address: string
+    //   - workingHours: string
+    //
+    // Collection: services
+    //   - title: string
+    //   - description: string
+    //   - icon: string
+    //   - order: number
+    //
+    // Collection: projects
+    //   - title: string
+    //   - description: string
+    //   - imageUrl: string
+    //   - category: string
+    //   - order: number
+    //
+    // Collection: testimonials
+    //   - name: string
+    //   - role: string
+    //   - content: string
+    //   - rating: number
+    //   - imageUrl: string
+    //
+    // Collection: blogPosts
+    //   - title: string
+    //   - excerpt: string
+    //   - content: string
+    //   - imageUrl: string
+    //   - date: string
+    //   - author: string
+    //
+    // Collection: partnerLogos
+    //   - name: string
+    //   - imageUrl: string
+    //   - order: number
+    //
+    // Collection: locations
+    //   - name: string
+    //   - lat: number
+    //   - lng: number
+    // ===============================================================
+
+    // Helper Functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && 
+        (request.auth.token.email == "muhammadwaleedw@gmail.com" && request.auth.token.email_verified == true);
+    }
+
+    // Site settings: Publicly readable, admin writable
+    match /settings/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // All other collections: Publicly readable, admin writable
+    match /{collection}/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}

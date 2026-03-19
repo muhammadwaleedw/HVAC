@@ -1,0 +1,112 @@
+{
+  "entities": {
+    "siteSettings": {
+      "title": "Site Settings",
+      "description": "General site-wide configuration like hero text, contact info, etc.",
+      "type": "object",
+      "properties": {
+        "siteName": { "type": "string", "description": "The name of your website" },
+        "siteDescription": { "type": "string", "description": "SEO description for the website" },
+        "logoUrl": { "type": "string", "description": "URL for the site logo" },
+        "heroHeadline": { "type": "string", "description": "Main headline for the hero section" },
+        "heroSubtext": { "type": "string", "description": "Subtext for the hero section" },
+        "heroCtaText": { "type": "string", "description": "Text for the main call to action button" },
+        "heroBadgeText": { "type": "string", "description": "Text for the small badge above the headline" },
+        "heroImageUrl": { "type": "string", "description": "URL for the main hero image" },
+        "heroCard1Text": { "type": "string", "description": "Text for the first floating card" },
+        "heroCard2Text": { "type": "string", "description": "Text for the second floating card" },
+        "phone": { "type": "string", "description": "Primary contact phone number" },
+        "email": { "type": "string", "description": "Primary contact email" },
+        "address": { "type": "string", "description": "Physical address" },
+        "workingHours": { "type": "string", "description": "Business working hours" },
+        "facebookUrl": { "type": "string", "description": "Facebook profile URL" },
+        "twitterUrl": { "type": "string", "description": "Twitter profile URL" },
+        "instagramUrl": { "type": "string", "description": "Instagram profile URL" },
+        "linkedinUrl": { "type": "string", "description": "LinkedIn profile URL" }
+      }
+    },
+    "service": {
+      "title": "Service",
+      "description": "HVAC service offered by the company",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "icon": { "type": "string", "description": "Lucide icon name" },
+        "order": { "type": "number" }
+      },
+      "required": ["title", "description", "icon"]
+    },
+    "project": {
+      "title": "Project",
+      "description": "Portfolio item/case study",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "category": { "type": "string" },
+        "order": { "type": "number" }
+      },
+      "required": ["title", "imageUrl"]
+    },
+    "testimonial": {
+      "title": "Testimonial",
+      "description": "Customer review",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "role": { "type": "string" },
+        "content": { "type": "string" },
+        "rating": { "type": "number" },
+        "imageUrl": { "type": "string" }
+      },
+      "required": ["name", "content", "rating"]
+    },
+    "blogPost": {
+      "title": "Blog Post",
+      "description": "Article for the blog section",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "excerpt": { "type": "string" },
+        "content": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "author": { "type": "string" }
+      },
+      "required": ["title", "content", "date"]
+    },
+    "partnerLogo": {
+      "title": "Partner Logo",
+      "description": "Logo for the trusted by section",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "order": { "type": "number" }
+      },
+      "required": ["imageUrl"]
+    },
+    "location": {
+      "title": "Service Location",
+      "description": "Marker for the service area map",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "lat": { "type": "number" },
+        "lng": { "type": "number" }
+      },
+      "required": ["name", "lat", "lng"]
+    }
+  },
+  "firestore": {
+    "settings/site": { "schema": "siteSettings", "description": "Global site settings" },
+    "services": { "schema": "service", "description": "List of HVAC services" },
+    "projects": { "schema": "project", "description": "Portfolio of past work" },
+    "testimonials": { "schema": "testimonial", "description": "Customer testimonials" },
+    "blogPosts": { "schema": "blogPost", "description": "Blog articles" },
+    "partnerLogos": { "schema": "partnerLogo", "description": "Logos of partners/brands" },
+    "locations": { "schema": "location", "description": "Service area locations" }
+  }
+}
